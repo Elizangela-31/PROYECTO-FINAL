@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lugares de Ecuador | EALR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Navbar compartido -->
+  <nav class="navbar">
+    <span class="menu-toggle">☰</span>
+    <ul>
+      <li><a href="Index.html">HOME</a></li>
+      <li><a href="hoja2.html">SABIAS QUE</a></li>
+      <li><a href="hoja3.html">SITIOS</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido exclusivo hoja3 -->
+  <section class="hoja2">
+    <div class="header">
+      <h1>LUGARES QUE DEBES CONOCER DE ECUADOR</h1>
+      <h2>Descubre la diversidad de nuestro país</h2>
+    </div>
+
+    <h3>Quito</h3>
+    <p>La capital del Ecuador, famosa por su Centro Histórico Patrimonio de la Humanidad, iglesias coloniales y miradores como El Panecillo.</p>
+
+    <h3>Galápagos</h3>
+    <p>Un paraíso natural con especies únicas en el mundo, ideal para ecoturismo y observación de fauna marina.</p>
+
+    <h3>Baños de Agua Santa</h3>
+    <p>Destino de aventura con cascadas, deportes extremos y aguas termales, ubicado en la provincia de Tungurahua.</p>
+
+    <h3>Cuenca</h3>
+    <p>Ciudad colonial con arquitectura europea, reconocida por su cultura, gastronomía y el río Tomebamba.</p>
+
+    <h3>Montañita</h3>
+    <p>Playa famosa por el surf y la vida nocturna, ubicada en la provincia de Santa Elena.</p>
+
+    <h3>Amazonía</h3>
+    <p>Selva exuberante con biodiversidad única, comunidades indígenas y experiencias de turismo ecológico.</p>
+  </section>
+
+  <!-- Footer compartido -->
+  <footer>
+    <p>Derechos reservados 2026</p>
+  </footer>
+
+  <!-- Script para el menú -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.navbar ul');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
