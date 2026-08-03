@@ -1,26 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAlCunDxQE0WI2Wk2qKATwxzB8mf20Mlfg",
-  authDomain: "ecuatours-d42ae.firebaseapp.com",
-  projectId: "ecuatours-d42ae",
-  storageBucket: "ecuatours-d42ae.firebasestorage.app",
-  messagingSenderId: "336658956433",
-  appId: "1:336658956433:web:b60cc6f1d2608704edff30"
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
-
-const authErrorMessages = {
-  "auth/email-already-in-use": "Este correo ya está registrado.",
-  "auth/invalid-email": "Ingresa un correo electrónico válido.",
-  "auth/weak-password": "La clave debe tener mínimo 6 caracteres."
-};
-
 const menuButton = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 const navItems = document.querySelectorAll(".nav-link");
@@ -33,9 +10,6 @@ const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 const modalClose = document.querySelector(".modal-close");
 const modalInfoButton = document.querySelector(".modal-info-btn");
-const form = document.getElementById("formulario");
-const respuesta = document.getElementById("respuesta");
-const interes = document.getElementById("interes");
 let activeDestination = null;
  
 const destinationDetails = {
@@ -94,14 +68,15 @@ destinationButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const destination = button.dataset.destination;
     const detail = destinationDetails[destination];
- 
+
     if (!detail) {
       return;
     }
- 
+
     modalTitle.textContent = detail.title;
     modalText.textContent = detail.text;
     activeDestination = detail;
+    modalInfoButton.href = `Registro.html?interes=${encodeURIComponent(detail.interest)}`;
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
   });
@@ -109,9 +84,8 @@ destinationButtons.forEach((button) => {
  
 packageButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    interes.value = button.dataset.package;
-    document.getElementById("registro").scrollIntoView({ behavior: "smooth" });
-    document.getElementById("nombre").focus({ preventScroll: true });
+    const interes = encodeURIComponent(button.dataset.package);
+    window.location.href = `Registro.html?interes=${interes}`;
   });
 });
  
@@ -128,60 +102,11 @@ modal.addEventListener("click", (event) => {
   }
 });
  
-modalInfoButton.addEventListener("click", () => {
-  if (activeDestination) {
-    interes.value = activeDestination.interest;
-  }
- 
-  closeModal();
-});
- 
+modalInfoButton.addEventListener("click", closeModal);
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
-  }
-});
- 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  respuesta.classList.remove("error");
- 
-  if (!form.checkValidity()) {
-    respuesta.textContent = "Completa tu nombre, correo válido y clave.";
-    respuesta.classList.add("error");
-    form.reportValidity();
-    return;
-  }
- 
-  const submitButton = form.querySelector("button[type='submit']");
-  submitButton.disabled = true;
-  submitButton.textContent = "Guardando...";
-  respuesta.textContent = "";
-
-  const nombre = document.getElementById("nombre").value.trim();
-  const correo = document.getElementById("correo").value.trim();
-  const clave = document.getElementById("clave").value;
-  const interesSeleccionado = interes.value;
-
-  try {
-    const credencial = await createUserWithEmailAndPassword(auth, correo, clave);
-
-    await addDoc(collection(db, "usuarios"), {
-      uid: credencial.user.uid,
-      nombre,
-      correo,
-      interes: interesSeleccionado,
-      creadoEn: serverTimestamp()
-    });
-
-    respuesta.textContent = "Registro guardado correctamente. Ya puedes iniciar sesión.";
-    form.reset();
-  } catch (error) {
-    respuesta.textContent = authErrorMessages[error.code] || "No se pudo guardar el registro.";
-    respuesta.classList.add("error");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "Guardar registro";
   }
 });
  
