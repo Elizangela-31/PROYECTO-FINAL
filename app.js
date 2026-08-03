@@ -1,3 +1,26 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlCunDxQE0WI2Wk2qKATwxzB8mf20Mlfg",
+  authDomain: "ecuatours-d42ae.firebaseapp.com",
+  projectId: "ecuatours-d42ae",
+  storageBucket: "ecuatours-d42ae.firebasestorage.app",
+  messagingSenderId: "336658956433",
+  appId: "1:336658956433:web:b60cc6f1d2608704edff30"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+const authErrorMessages = {
+  "auth/email-already-in-use": "Este correo ya está registrado.",
+  "auth/invalid-email": "Ingresa un correo electrónico válido.",
+  "auth/weak-password": "La clave debe tener mínimo 6 caracteres."
+};
+
 const menuButton = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 const navItems = document.querySelectorAll(".nav-link");
@@ -134,23 +157,27 @@ form.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
   submitButton.textContent = "Guardando...";
   respuesta.textContent = "";
- 
+
+  const nombre = document.getElementById("nombre").value.trim();
+  const correo = document.getElementById("correo").value.trim();
+  const clave = document.getElementById("clave").value;
+  const interesSeleccionado = interes.value;
+
   try {
-    const response = await fetch("guardar.php", {
-      method: "POST",
-      body: new FormData(form)
+    const credencial = await createUserWithEmailAndPassword(auth, correo, clave);
+
+    await addDoc(collection(db, "usuarios"), {
+      uid: credencial.user.uid,
+      nombre,
+      correo,
+      interes: interesSeleccionado,
+      creadoEn: serverTimestamp()
     });
- 
-    const data = await response.text();
- 
-    if (!response.ok) {
-      throw new Error(data || "No se pudo guardar el registro. Revisa la conexión SQL.");
-    }
- 
-    respuesta.textContent = data;
+
+    respuesta.textContent = "Registro guardado correctamente. Ya puedes iniciar sesión.";
     form.reset();
   } catch (error) {
-    respuesta.textContent = error.message;
+    respuesta.textContent = authErrorMessages[error.code] || "No se pudo guardar el registro.";
     respuesta.classList.add("error");
   } finally {
     submitButton.disabled = false;
