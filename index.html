@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcuaTours | Servicios Turísticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img class="brand-mark" srgitc="biodiversidad.jpg" alt="Logo EcuaTours">
+        <span>EcuaTours</span>
+      </a>
+ 
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+ 
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#destinos" class="nav-link">Destinos</a></li>
+        <li><a href="#paquetes" class="nav-link">Paquetes</a></li>
+        <li><a href="#registro" class="nav-link nav-cta">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Turismo en Ecuador</p>
+        <h1>Experiencias turísticas para descubrir Ecuador.</h1>
+        <p class="hero-text">Organizamos alojamiento, transporte, guías, alimentación y paquetes personalizados para viajeros que buscan naturaleza, cultura y comodidad.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#paquetes">Ver paquetes</a>
+          <a class="btn btn-secondary" href="#registro">Solicitar información</a>
+        </div>
+      </div>
+    </section>
+ 
+    <section id="servicios" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Lo que gestionamos</p>
+        <h2>Servicios turísticos integrales</h2>
+        <p>Cada servicio está pensado para reducir imprevistos y mejorar la experiencia durante todo el viaje.</p>
+      </div>
+ 
+      <div class="service-grid">
+        <article class="service-card">
+          <span class="icon">🏨</span>
+          <h3>Alojamiento</h3>
+          <p>Hoteles, hostales y ecolodges seleccionados según presupuesto, ubicación y tipo de experiencia.</p>
+        </article>
+        <article class="service-card">
+          <span class="icon">🚐</span>
+          <h3>Transporte</h3>
+          <p>Traslados privados, rutas terrestres y coordinación logística para viajes seguros y puntuales.</p>
+        </article>
+        <article class="service-card">
+          <span class="icon">🧭</span>
+          <h3>Guías locales</h3>
+          <p>Acompañamiento especializado para naturaleza, cultura, aventura, gastronomía y fotografía.</p>
+        </article>
+        <article class="service-card">
+          <span class="icon">🍽️</span>
+          <h3>Alimentación</h3>
+          <p>Opciones gastronómicas locales, menús adaptados y recomendaciones para cada destino.</p>
+        </article>
+      </div>
+    </section>
+ 
+    <section id="destinos" class="section section-muted">
+      <div class="section-heading">
+        <p class="eyebrow">Explora el país</p>
+        <h2>Destinos recomendados</h2>
+        <p>Las imágenes se cargan desde enlaces externos, sin depender de archivos locales.</p>
+      </div>
+ 
+      <div class="destination-grid destination-grid--four">
+        <article class="destination-card">
+          <img src="https://imgmedia.larepublica.pe/1000x590/larepublica/original/2024/11/26/67465db85bb6f54c3376f02b.webp%22 alt="Costa ecuatoriana con playa, mar y vegetacion tropical">
+          <div>
+            <span>Costa</span>
+            <h3>Playas, gastronomia y ballenas</h3>
+            <p>Rutas por Manabi, Esmeraldas, Santa Elena y Guayas con mariscos, surf y descanso frente al mar.</p>
+            <button class="btn btn-small destination-btn" type="button" data-destination="costa">Mas informacion</button>
+          </div>
+        </article>
+ 
+        <article class="destination-card">
+          <img src="https://artralux.co.th/wp-content/uploads/2022/04/cover-%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0-%E0%B8%81%E0%B8%B2%E0%B8%A5%E0%B8%B2%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%AA-1-768x384.jpg%22 alt="Islas Galapagos con aguas turquesas y formaciones volcanicas">
+          <div>
+            <span>Galapagos</span>
+            <h3>Fauna unica y paisajes volcanicos</h3>
+            <p>Snorkel, observacion de tortugas, iguanas marinas, lobos marinos y navegacion entre islas.</p>
+            <button class="btn btn-small destination-btn" type="button" data-destination="galapagos">Mas informacion</button>
+          </div>
+        </article>
+ 
+        <article class="destination-card">
+          <img src="https://www.galakiwi.com/blog/wp-content/uploads/2025/10/pexels-davegarcia-30785381-scaled.jpg" alt="Volcan Cotopaxi en la Sierra ecuatoriana">
+          <div>
+            <span>Sierra</span>
+            <h3>Volcanes, lagunas y cultura andina</h3>
+            <p>Quito, Cotopaxi, Quilotoa, Cuenca y mercados tradicionales con paisajes de altura.</p>
+            <button class="btn btn-small destination-btn" type="button" data-destination="sierra">Mas informacion</button>
+          </div>
+        </article>
+ 
+        <article class="destination-card">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85" alt="Selva tropical similar a la Amazonia ecuatoriana">
+          <div>
+            <span>Amazonia</span>
+            <h3>Selva, rios y comunidades</h3>
+            <p>Canoas, lodges ecologicos, caminatas guiadas, aves exoticas y turismo comunitario.</p>
+            <button class="btn btn-small destination-btn" type="button" data-destination="amazonia">Mas informacion</button>
+          </div>
+        </article>
+      </div>
+    </section>
+ 
+    <section id="paquetes" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Elige tu experiencia</p>
+        <h2>Paquetes destacados</h2>
+      </div>
+ 
+      <div class="filter-bar" aria-label="Filtro de paquetes">
+        <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+        <button class="filter-btn" type="button" data-filter="aventura">Aventura</button>
+        <button class="filter-btn" type="button" data-filter="cultura">Cultura</button>
+        <button class="filter-btn" type="button" data-filter="relax">Relax</button>
+      </div>
+ 
+      <div class="package-grid">
+        <article class="package-card" data-category="aventura">
+          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1000&q=80" alt="Viajero con mochila en ruta de aventura">
+          <div class="package-body">
+            <span>Aventura</span>
+            <h3>Ruta volcanes y cascadas</h3>
+            <p>3 días con transporte, guía, alojamiento y actividades al aire libre.</p>
+            <button class="btn btn-primary package-btn" type="button" data-package="Ruta volcanes y cascadas">Cotizar</button>
+          </div>
+        </article>
+ 
+        <article class="package-card" data-category="cultura">
+          <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=1000&q=80" alt="Centro histórico con arquitectura patrimonial">
+          <div class="package-body">
+            <span>Cultura</span>
+            <h3>Quito y ciudades patrimoniales</h3>
+            <p>2 días de historia, gastronomía, miradores y recorridos guiados.</p>
+            <button class="btn btn-primary package-btn" type="button" data-package="Quito y ciudades patrimoniales">Cotizar</button>
+          </div>
+        </article>
+ 
+        <article class="package-card" data-category="relax">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Playa con mar azul">
+          <div class="package-body">
+            <span>Relax</span>
+            <h3>Costa y descanso frente al mar</h3>
+            <p>4 días con hotel, traslados, alimentación y actividades suaves.</p>
+            <button class="btn btn-primary package-btn" type="button" data-package="Costa y descanso frente al mar">Cotizar</button>
+          </div>
+        </article>
+      </div>
+    </section>
+ 
+    <section id="registro" class="section section-form">
+      <div class="form-panel">
+        <div>
+          <h2>Registra tus datos para recibir información</h2>
+        </div>
+ 
+        <form id="formulario" class="contact-form" novalidate>
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Torres" required minlength="2">
+ 
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+ 
+          <label for="clave">Clave</label>
+          <input type="password" id="clave" name="clave" placeholder="Mínimo 6 caracteres" required minlength="6">
+ 
+          <label for="interes">Paquete de interés</label>
+          <select id="interes" name="interes">
+            <option value="Información general">Información general</option>
+            <option value="Costa y descanso frente al mar">Costa y descanso frente al mar</option>
+            <option value="Galapagos naturaleza unica">Galapagos naturaleza unica</option>
+            <option value="Sierra volcanes y cultura">Sierra volcanes y cultura</option>
+            <option value="Amazonia selva y comunidades">Amazonia selva y comunidades</option>
+            <option value="Ruta volcanes y cascadas">Ruta volcanes y cascadas</option>
+            <option value="Quito y ciudades patrimoniales">Quito y ciudades patrimoniales</option>
+          </select>
+ 
+          <button class="btn btn-primary" type="submit">Guardar registro</button>
+          <p id="respuesta" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+ 
+  <div class="modal hidden" id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Cerrar ventana">×</button>
+      <p class="eyebrow">Detalle del destino</p>
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <a class="btn btn-primary modal-info-btn" href="#registro">Quiero informacion</a>
+    </div>
+  </div>
+ 
+  <footer class="site-footer">
+    <p>Derechos reservados-EcuaTours</p>
+  </footer>
+ 
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+ 
