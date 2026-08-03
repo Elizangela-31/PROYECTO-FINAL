@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<style>*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#1F6662,#16524F,#C8E6C9);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+.section-form{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.form-panel{
+
+    width:100%;
+    max-width:650px;
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:45px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+}
+
+.eyebrow{
+
+    color:#1F6662;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+    font-size:14px;
+}
+
+h2{
+
+    color:#1F6662;
+
+    margin-bottom:10px;
+
+    font-size:32px;
+}
+
+.form-panel p{
+
+    color:#666;
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+}
+
+.contact-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.contact-form label{
+
+    font-weight:600;
+
+    color:#1F6662;
+}
+
+.contact-form input,
+.contact-form select{
+
+    padding:15px;
+
+    border:2px solid #C8E6C9;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.contact-form input:focus,
+.contact-form select:focus{
+
+    outline:none;
+
+    border-color:#43A047;
+
+    box-shadow:0 0 10px rgba(67,160,71,.3);
+}
+
+.btn{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(46,125,50,.35);
+}
+
+.form-message{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#2E7D32;
+}
+
+@media(max-width:768px){
+
+.form-panel{
+
+padding:30px;
+
+}
+
+h2{
+
+font-size:26px;
+
+}
+
+}</style>   
+<body>
+    
+    <section id="registro" class="section section-form">
+      <div class="form-panel">
+        <div>
+          <h2>Registra tus datos para recibir información</h2>
+          <p>El formulario guarda el nombre, correo y clave en la tabla <strong>usuarios</strong>, de acuerdo con la estructura actual de MySQL.</p>
+        </div>
+ 
+        <form id="formulario" class="contact-form" novalidate>
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Torres" required minlength="2">
+ 
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+ 
+          <label for="clave">Clave</label>
+          <input type="password" id="clave" name="clave" placeholder="Mínimo 6 caracteres" required minlength="6">
+ 
+          <label for="interes">Paquete de interés</label>
+          <select id="interes" name="interes">
+            <option value="Información general">Información general</option>
+            <option value="Costa y descanso frente al mar">Costa y descanso frente al mar</option>
+            <option value="Galapagos naturaleza unica">Galapagos naturaleza unica</option>
+            <option value="Sierra volcanes y cultura">Sierra volcanes y cultura</option>
+            <option value="Amazonia selva y comunidades">Amazonia selva y comunidades</option>
+            <option value="Ruta volcanes y cascadas">Ruta volcanes y cascadas</option>
+            <option value="Quito y ciudades patrimoniales">Quito y ciudades patrimoniales</option>
+          </select>
+ 
+          <button class="btn btn-primary" type="submit">Guardar registro</button>
+          <p id="respuesta" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
