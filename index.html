@@ -131,42 +131,219 @@
         <p class="eyebrow">Elige tu experiencia</p>
         <h2>Paquetes destacados</h2>
       </div>
- 
-      <div class="filter-bar" aria-label="Filtro de paquetes">
-        <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
-        <button class="filter-btn" type="button" data-filter="aventura">Aventura</button>
-        <button class="filter-btn" type="button" data-filter="cultura">Cultura</button>
-        <button class="filter-btn" type="button" data-filter="relax">Relax</button>
+
+      <div class="catalog-tools">
+        <div class="filter-bar" aria-label="Filtro de paquetes">
+          <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+          <button class="filter-btn" type="button" data-filter="aventura">Aventura</button>
+          <button class="filter-btn" type="button" data-filter="cultura">Cultura</button>
+          <button class="filter-btn" type="button" data-filter="relax">Relax</button>
+        </div>
+
+        <div class="search-bar">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" id="package-search" placeholder="Buscar paquete..." aria-label="Buscar paquete">
+        </div>
       </div>
- 
+
+      <p id="package-empty" class="package-empty hidden">No encontramos paquetes con ese criterio.</p>
+
       <div class="package-grid">
-        <article class="package-card" data-category="aventura">
-          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1000&q=80" alt="Viajero con mochila en ruta de aventura">
+        <article class="package-card" data-category="aventura" data-name="Ruta volcanes y cascadas" data-map="Cotopaxi, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1000&q=80" alt="Viajero con mochila en ruta de aventura">
+            <span class="badge badge-duration">3 días</span>
+            <span class="badge badge-category badge-aventura">Aventura</span>
+          </div>
           <div class="package-body">
-            <span>Aventura</span>
             <h3>Ruta volcanes y cascadas</h3>
-            <p>3 días con transporte, guía, alojamiento y actividades al aire libre.</p>
-            <button class="btn btn-primary package-btn" type="button" data-package="Ruta volcanes y cascadas">Cotizar</button>
+            <p>Transporte, guía, alojamiento y actividades al aire libre entre volcanes y cascadas.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$180</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Ruta volcanes y cascadas">Reservar</button>
+              </div>
+            </div>
           </div>
         </article>
- 
-        <article class="package-card" data-category="cultura">
-          <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=1000&q=80" alt="Centro histórico con arquitectura patrimonial">
+
+        <article class="package-card" data-category="cultura" data-name="Quito y ciudades patrimoniales" data-map="Centro Histórico de Quito, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=1000&q=80" alt="Centro histórico con arquitectura patrimonial">
+            <span class="badge badge-duration">2 días</span>
+            <span class="badge badge-category badge-cultura">Cultura</span>
+          </div>
           <div class="package-body">
-            <span>Cultura</span>
             <h3>Quito y ciudades patrimoniales</h3>
-            <p>2 días de historia, gastronomía, miradores y recorridos guiados.</p>
-            <button class="btn btn-primary package-btn" type="button" data-package="Quito y ciudades patrimoniales">Cotizar</button>
+            <p>Historia, gastronomía, miradores y recorridos guiados por el centro histórico.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$95</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Quito y ciudades patrimoniales">Reservar</button>
+              </div>
+            </div>
           </div>
         </article>
- 
-        <article class="package-card" data-category="relax">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Playa con mar azul">
+
+        <article class="package-card" data-category="relax" data-name="Costa y descanso frente al mar" data-map="Manta, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Playa con mar azul">
+            <span class="badge badge-duration">4 días</span>
+            <span class="badge badge-category badge-relax">Relax</span>
+          </div>
           <div class="package-body">
-            <span>Relax</span>
             <h3>Costa y descanso frente al mar</h3>
-            <p>4 días con hotel, traslados, alimentación y actividades suaves.</p>
-            <button class="btn btn-primary package-btn" type="button" data-package="Costa y descanso frente al mar">Cotizar</button>
+            <p>Hotel, traslados, alimentación y actividades suaves frente al mar.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$260</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Costa y descanso frente al mar">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="aventura" data-name="Selva y kayak amazónico" data-map="Tena, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85" alt="Río en la selva amazónica">
+            <span class="badge badge-duration">3 días</span>
+            <span class="badge badge-category badge-aventura">Aventura</span>
+          </div>
+          <div class="package-body">
+            <h3>Selva y kayak amazónico</h3>
+            <p>Navegación en kayak, caminatas guiadas y noches en lodge ecológico.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$210</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Selva y kayak amazónico">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="cultura" data-name="Cuenca colonial y artesanías" data-map="Cuenca, Ecuador">
+          <div class="package-media">
+            <img src="https://www.galakiwi.com/blog/wp-content/uploads/2025/10/pexels-davegarcia-30785381-scaled.jpg" alt="Paisaje andino de la Sierra ecuatoriana">
+            <span class="badge badge-duration">2 días</span>
+            <span class="badge badge-category badge-cultura">Cultura</span>
+          </div>
+          <div class="package-body">
+            <h3>Cuenca colonial y artesanías</h3>
+            <p>Arquitectura republicana, talleres de artesanos y mercados tradicionales.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$110</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Cuenca colonial y artesanías">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="relax" data-name="Galápagos costa y snorkel" data-map="Puerto Ayora, Galápagos, Ecuador">
+          <div class="package-media">
+            <img src="https://artralux.co.th/wp-content/uploads/2022/04/cover-%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0-%E0%B8%81%E0%B8%B2%E0%B8%A5%E0%B8%B2%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%AA-1-768x384.jpg" alt="Aguas turquesas de Galápagos">
+            <span class="badge badge-duration">5 días</span>
+            <span class="badge badge-category badge-relax">Relax</span>
+          </div>
+          <div class="package-body">
+            <h3>Galápagos costa y snorkel</h3>
+            <p>Playas volcánicas, snorkel y navegación entre islas a ritmo tranquilo.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$650</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Galápagos costa y snorkel">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="aventura" data-name="Refugio de Vida Silvestre Pasochoa" data-map="Refugio de Vida Silvestre Pasochoa, Rumiñahui, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80" alt="Bosque andino primario en Rumipamba, Rumiñahui">
+            <span class="badge badge-duration">1 día</span>
+            <span class="badge badge-category badge-aventura">Aventura</span>
+          </div>
+          <div class="package-body">
+            <h3>Refugio de Vida Silvestre Pasochoa</h3>
+            <p>Caminata guiada por uno de los últimos remanentes de bosque andino primario, con avistamiento de aves en Rumipamba, Rumiñahui.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$45</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Refugio de Vida Silvestre Pasochoa">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="aventura" data-name="Rutas en cuadrón" data-map="Rumipamba, Rumiñahui, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80" alt="Ruta en cuadrón por los senderos de Rumipamba">
+            <span class="badge badge-duration">1 día</span>
+            <span class="badge badge-category badge-aventura">Aventura</span>
+          </div>
+          <div class="package-body">
+            <h3>Rutas en cuadrón</h3>
+            <p>Recorrido en cuadrón por los senderos rurales y miradores de Rumipamba, con guía y equipo de seguridad incluido.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$20</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Rutas en cuadrón">Reservar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-category="relax" data-name="Truchas y turismo rural en Rumipamba" data-map="Rumipamba, Rumiñahui, Ecuador">
+          <div class="package-media">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Paisaje rural andino con caballos en Rumipamba">
+            <span class="badge badge-duration">1 día</span>
+            <span class="badge badge-category badge-relax">Relax</span>
+          </div>
+          <div class="package-body">
+            <h3>Truchas y turismo rural en Rumipamba</h3>
+            <p>Visita a criaderos de truchas, cabalgatas y paisajes andinos en un día de descanso en el campo cerca de Sangolquí.</p>
+            <div class="package-footer">
+              <div class="price">
+                <span class="price-label">Desde</span>
+                <strong>$35</strong>
+              </div>
+              <div class="package-actions">
+                <button class="btn btn-outline package-info-btn" type="button">Ver más</button>
+                <button class="btn btn-primary package-btn" type="button" data-package="Truchas y turismo rural en Rumipamba">Reservar</button>
+              </div>
+            </div>
           </div>
         </article>
       </div>
@@ -182,7 +359,37 @@
       <a class="btn btn-primary modal-info-btn" href="Registro.html">Quiero informacion</a>
     </div>
   </div>
- 
+
+  <div class="modal hidden" id="package-modal" aria-hidden="true">
+    <div class="modal-card package-modal-card" role="dialog" aria-modal="true" aria-labelledby="package-modal-title">
+      <button class="modal-close package-modal-close" type="button" aria-label="Cerrar ventana">×</button>
+      <p class="eyebrow">Detalle del paquete</p>
+      <h2 id="package-modal-title"></h2>
+
+      <div class="package-modal-meta">
+        <div>
+          <span class="price-label">Duración</span>
+          <strong id="package-modal-duration"></strong>
+        </div>
+        <div>
+          <span class="price-label">Precio</span>
+          <strong id="package-modal-price"></strong>
+        </div>
+      </div>
+
+      <p id="package-modal-desc"></p>
+
+      <div class="package-modal-map">
+        <iframe id="package-modal-iframe" src="" title="Ubicación del paquete" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="modal-actions">
+        <a class="btn btn-whatsapp" id="package-modal-whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <button class="btn btn-outline package-modal-close" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>Derechos reservados-EcuaTours</p>
   </footer>
