@@ -1,63 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Lugares de Ecuador | EALR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Turística - Destinos en Ecuador</title>
+    <style>
+        :root {
+            --primary-blue: #0ea5e9;
+            --secondary-blue: #0369a1;
+            --dark-text: #1f2937;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            padding: 2rem 5%;
+        }
+
+        .info-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--secondary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--secondary-blue);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #f8fafc;
+            margin-bottom: 0.75rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            font-size: 0.95rem;
+        }
+
+        li strong {
+            color: var(--dark-text);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Navbar compartido -->
-  <nav class="navbar">
-    <span class="menu-toggle">☰</span>
-    <ul>
-      <li><a href="Index.html">HOME</a></li>
-      <li><a href="hoja2.html">SABIAS QUE</a></li>
-      <li><a href="hoja3.html">SITIOS</a></li>
-    </ul>
-  </nav>
+    <div class="info-container">
+        <h1>Información Turística de Destinos en Ecuador</h1>
+        <p class="intro">Guía detallada de servicios, organizados por regiones para ofrecer a los viajeros una experiencia completa de naturaleza, cultura y comodidad[cite: 2].</p>
 
-  <!-- Contenido exclusivo hoja3 -->
-  <section class="hoja2">
-    <div class="header">
-      <h1>LUGARES QUE DEBES CONOCER DE ECUADOR</h1>
-      <h2>Descubre la diversidad de nuestro país</h2>
+        <h2>1. Costa Ecuatoriana</h2>
+        <ul>
+            <li><strong>Atractivos Principales:</strong> Playas turísticas en las provincias de Manabí y Santa Elena, la Ruta del Spondylus, manglares protegidos y el avistamiento estacional de ballenas jorobadas.[cite: 2]</li>
+            <li><strong>Servicios Incluidos:</strong> Hospedaje frente al mar, transporte terrestre y marítimo, tours guiados en bote, gastronomía típica costeña (cebiche y encocado) y actividades recreativas en la playa.[cite: 2]</li>
+            <li><strong>Tour Destacado:</strong> <em>“Ruta del Sol y Aventura Marina”</em> (4 días / 3 noches).[cite: 2]</li>
+        </ul>
+
+        <h2>2. Sierra Andina</h2>
+        <ul>
+            <li><strong>Atractivos Principales:</strong> La Avenida de los Volcanes, reservas ecológicas alrededor del Cotopaxi y Chimborazo, el mercado artesanal de Otavalo, y la arquitectura colonial de Cuenca y Quito.[cite: 2]</li>
+            <li><strong>Servicios Incluidos:</strong> Traslados en vehículos privados, caminatas guiadas de media y alta montaña, hospedaje en haciendas tradicionales andinas y alimentación completa.[cite: 2]</li>
+            <li><strong>Tour Destacado:</strong> <em>“Avenida de los Volcanes y Culturas Ancestrales”</em> (5 días / 4 noches).[cite: 2]</li>
+        </ul>
+
+        <h2>3. Galápagos</h2>
+        <ul>
+            <li><strong>Atractivos Principales:</strong> Islas Santa Cruz, San Cristóbal y Bartolomé, avistamiento de tortugas gigantes terrestres, colonias de lobos marinos, aves endémicas y puntos de esnórquel.[cite: 2]</li>
+            <li><strong>Servicios Incluidos:</strong> Tickets de transporte interinsular, equipo completo para esnórquel, guías naturalistas autorizados por el Parque Nacional Galápagos y visitas a centros de crianza.[cite: 2]</li>
+            <li><strong>Tour Destacado:</strong> <em>“Encanto Natural en Islas Galápagos”</em> (6 días / 5 noches).[cite: 2]</li>
+        </ul>
+
+        <h2>4. Amazonía</h2>
+        <ul>
+            <li><strong>Atractivos Principales:</strong> La biodiversidad de las reservas Yasuní y Cuyabeno, navegación por ríos amazónicos, lodges ecológicos inmersos en la selva y convivencia con comunidades nativas.[cite: 2]</li>
+            <li><strong>Servicios Incluidos:</strong> Hospedaje en eco-lodges, transporte fluvial en canoas motorizadas, caminatas guiadas diurnas y nocturnas por la selva tropical, e interacción cultural comunitaria.[cite: 2]</li>
+            <li><strong>Tour Destacado:</strong> <em>“Expedición Profunda en la Selva Amazónica”</em> (4 días / 3 noches).[cite: 2]</li>
+        </ul>
     </div>
-
-    <h3>Quito</h3>
-    <p>La capital del Ecuador, famosa por su Centro Histórico Patrimonio de la Humanidad, iglesias coloniales y miradores como El Panecillo.</p>
-
-    <h3>Galápagos</h3>
-    <p>Un paraíso natural con especies únicas en el mundo, ideal para ecoturismo y observación de fauna marina.</p>
-
-    <h3>Baños de Agua Santa</h3>
-    <p>Destino de aventura con cascadas, deportes extremos y aguas termales, ubicado en la provincia de Tungurahua.</p>
-
-    <h3>Cuenca</h3>
-    <p>Ciudad colonial con arquitectura europea, reconocida por su cultura, gastronomía y el río Tomebamba.</p>
-
-    <h3>Montañita</h3>
-    <p>Playa famosa por el surf y la vida nocturna, ubicada en la provincia de Santa Elena.</p>
-
-    <h3>Amazonía</h3>
-    <p>Selva exuberante con biodiversidad única, comunidades indígenas y experiencias de turismo ecológico.</p>
-  </section>
-
-  <!-- Footer compartido -->
-  <footer>
-    <p>Derechos reservados 2026</p>
-  </footer>
-
-  <!-- Script para el menú -->
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.navbar ul');
-
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
-  </script>
 
 </body>
 </html>
