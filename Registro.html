@@ -181,19 +181,20 @@ font-size:26px;
       <div class="form-panel">
         <a href="index.html" style="display:inline-block;margin-bottom:20px;color:#1F6662;font-weight:600;text-decoration:none;">&larr; Volver al inicio</a>
         <div>
-          <h2>Registra tus datos para recibir información</h2>
+          <h2>Solicita información de tu paquete</h2>
+          <p>Déjanos tus datos y te contactamos para darte seguimiento a tu reserva.</p>
         </div>
- 
+
         <form id="formulario" class="contact-form" novalidate>
           <label for="nombre">Nombre completo</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Torres" required minlength="2">
- 
+
           <label for="correo">Correo electrónico</label>
           <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
- 
-          <label for="clave">Clave</label>
-          <input type="password" id="clave" name="clave" placeholder="Mínimo 6 caracteres" required minlength="6">
- 
+
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 0991234567" required minlength="7">
+
           <label for="interes">Paquete de interés</label>
           <select id="interes" name="interes">
             <option value="Información general">Información general</option>
@@ -211,7 +212,7 @@ font-size:26px;
             <option value="Truchas y turismo rural en Rumipamba">Truchas y turismo rural en Rumipamba</option>
           </select>
  
-          <button class="btn btn-primary" type="submit">Guardar registro</button>
+          <button class="btn btn-primary" type="submit">Enviar solicitud</button>
           <p id="respuesta" class="form-message" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -219,7 +220,6 @@ font-size:26px;
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
       import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -232,14 +232,7 @@ font-size:26px;
       };
 
       const firebaseApp = initializeApp(firebaseConfig);
-      const auth = getAuth(firebaseApp);
       const db = getFirestore(firebaseApp);
-
-      const authErrorMessages = {
-        "auth/email-already-in-use": "Este correo ya está registrado.",
-        "auth/invalid-email": "Ingresa un correo electrónico válido.",
-        "auth/weak-password": "La clave debe tener mínimo 6 caracteres."
-      };
 
       const form = document.getElementById("formulario");
       const respuesta = document.getElementById("respuesta");
@@ -256,7 +249,7 @@ font-size:26px;
         respuesta.classList.remove("error");
 
         if (!form.checkValidity()) {
-          respuesta.textContent = "Completa tu nombre, correo válido y clave.";
+          respuesta.textContent = "Completa tu nombre, correo y teléfono.";
           respuesta.classList.add("error");
           form.reportValidity();
           return;
@@ -264,33 +257,32 @@ font-size:26px;
 
         const submitButton = form.querySelector("button[type='submit']");
         submitButton.disabled = true;
-        submitButton.textContent = "Guardando...";
+        submitButton.textContent = "Enviando...";
         respuesta.textContent = "";
 
         const nombre = document.getElementById("nombre").value.trim();
         const correo = document.getElementById("correo").value.trim();
-        const clave = document.getElementById("clave").value;
+        const telefono = document.getElementById("telefono").value.trim();
         const interesSeleccionado = interes.value;
 
         try {
-          const credencial = await createUserWithEmailAndPassword(auth, correo, clave);
-
-          await addDoc(collection(db, "usuarios"), {
-            uid: credencial.user.uid,
+          await addDoc(collection(db, "solicitudes"), {
             nombre,
             correo,
+            telefono,
             interes: interesSeleccionado,
+            estado: "pendiente",
             creadoEn: serverTimestamp()
           });
 
-          respuesta.textContent = "Registro guardado correctamente. Ya puedes iniciar sesión.";
+          respuesta.textContent = "Solicitud enviada. Te contactaremos pronto.";
           form.reset();
         } catch (error) {
-          respuesta.textContent = authErrorMessages[error.code] || "No se pudo guardar el registro.";
+          respuesta.textContent = "No se pudo enviar la solicitud. Intenta de nuevo.";
           respuesta.classList.add("error");
         } finally {
           submitButton.disabled = false;
-          submitButton.textContent = "Guardar registro";
+          submitButton.textContent = "Enviar solicitud";
         }
       });
     </script>

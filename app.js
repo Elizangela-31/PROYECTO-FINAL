@@ -11,9 +11,8 @@ const packageInfoButtons = document.querySelectorAll(".package-info-btn");
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
+const modalPlaces = document.getElementById("modal-places");
 const modalClose = document.querySelector("#modal .modal-close");
-const modalInfoButton = document.querySelector(".modal-info-btn");
-let activeDestination = null;
 
 const AGENCY_WHATSAPP = "593959509052";
 
@@ -30,22 +29,22 @@ const destinationDetails = {
   costa: {
     title: "Costa",
     text: "La Costa combina playas, manglares, avistamiento de ballenas, surf y gastronomia marina. Es ideal para viajeros que buscan descanso, sol y experiencias frente al mar.",
-    interest: "Costa y descanso frente al mar"
+    places: ["Manta", "Salinas", "Montañita", "Puerto López"]
   },
   galapagos: {
     title: "Galapagos",
     text: "Galapagos ofrece fauna unica, playas volcanicas, snorkel, buceo y recorridos entre islas. Es una region perfecta para turismo de naturaleza y fotografia.",
-    interest: "Galapagos naturaleza unica"
+    places: ["Santa Cruz", "Isabela", "San Cristóbal", "Bartolomé"]
   },
   sierra: {
     title: "Sierra",
     text: "La Sierra muestra volcanes, lagunas, pueblos patrimoniales, mercados andinos y ciudades historicas como Quito y Cuenca.",
-    interest: "Sierra volcanes y cultura"
+    places: ["Quito", "Cotopaxi", "Quilotoa", "Cuenca", "Baños"]
   },
   amazonia: {
     title: "Amazonia",
     text: "La Amazonia ecuatoriana permite navegar por rios, caminar por senderos de selva, visitar comunidades locales y observar aves exoticas.",
-    interest: "Amazonia selva y comunidades"
+    places: ["Tena", "Puyo", "Misahuallí", "Yasuní"]
   }
 };
  
@@ -108,8 +107,12 @@ destinationButtons.forEach((button) => {
 
     modalTitle.textContent = detail.title;
     modalText.textContent = detail.text;
-    activeDestination = detail;
-    modalInfoButton.href = `Registro.html?interes=${encodeURIComponent(detail.interest)}`;
+    modalPlaces.innerHTML = "";
+    detail.places.forEach((place) => {
+      const item = document.createElement("li");
+      item.textContent = place;
+      modalPlaces.appendChild(item);
+    });
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
   });
@@ -177,8 +180,6 @@ modal.addEventListener("click", (event) => {
     closeModal();
   }
 });
-
-modalInfoButton.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") {
