@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información de Destinos | EcuaTours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    .info-container {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 2.5rem;
+    }
+
+    .info-container h1 {
+      color: var(--ink);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .info-container .intro {
+      border-bottom: 2px solid var(--line);
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .info-container h2 {
+      color: var(--brand-dark);
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .info-container ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .info-container li {
+      background-color: var(--soft);
+      border-left: 4px solid var(--brand);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      padding: 1rem;
+    }
+
+    .info-container li strong {
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img class="brand-mark" src="biodiversidad.jpg" alt="Logo EcuaTours">
+        <span>EcuaTours</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="informacion-destinos.html" class="nav-link active">Destinos</a></li>
+        <li><a href="index.html#paquetes" class="nav-link">Paquetes</a></li>
+        <li><a href="admin.html" class="nav-link nav-cta">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="info-container">
+        <h1>Información Turística de Destinos en Ecuador</h1>
+        <p class="intro">Guía detallada de servicios, organizados por regiones para ofrecer a los viajeros una experiencia completa de naturaleza, cultura y comodidad.</p>
+
+        <h2>1. Costa Ecuatoriana</h2>
+        <ul>
+          <li><strong>Atractivos Principales:</strong> Playas turísticas en las provincias de Manabí y Santa Elena, la Ruta del Spondylus, manglares protegidos y el avistamiento estacional de ballenas jorobadas.</li>
+          <li><strong>Servicios Incluidos:</strong> Hospedaje frente al mar, transporte terrestre y marítimo, tours guiados en bote, gastronomía típica costeña (cebiche y encocado) y actividades recreativas en la playa.</li>
+          <li><strong>Tour Destacado:</strong> <em>"Ruta del Sol y Aventura Marina"</em> (4 días / 3 noches).</li>
+        </ul>
+
+        <h2>2. Sierra Andina</h2>
+        <ul>
+          <li><strong>Atractivos Principales:</strong> La Avenida de los Volcanes, reservas ecológicas alrededor del Cotopaxi y Chimborazo, el mercado artesanal de Otavalo, y la arquitectura colonial de Cuenca y Quito.</li>
+          <li><strong>Servicios Incluidos:</strong> Traslados en vehículos privados, caminatas guiadas de media y alta montaña, hospedaje en haciendas tradicionales andinas y alimentación completa.</li>
+          <li><strong>Tour Destacado:</strong> <em>"Avenida de los Volcanes y Culturas Ancestrales"</em> (5 días / 4 noches).</li>
+        </ul>
+
+        <h2>3. Galápagos</h2>
+        <ul>
+          <li><strong>Atractivos Principales:</strong> Islas Santa Cruz, San Cristóbal y Bartolomé, avistamiento de tortugas gigantes terrestres, colonias de lobos marinos, aves endémicas y puntos de esnórquel.</li>
+          <li><strong>Servicios Incluidos:</strong> Tickets de transporte interinsular, equipo completo para esnórquel, guías naturalistas autorizados por el Parque Nacional Galápagos y visitas a centros de crianza.</li>
+          <li><strong>Tour Destacado:</strong> <em>"Encanto Natural en Islas Galápagos"</em> (6 días / 5 noches).</li>
+        </ul>
+
+        <h2>4. Amazonía</h2>
+        <ul>
+          <li><strong>Atractivos Principales:</strong> La biodiversidad de las reservas Yasuní y Cuyabeno, navegación por ríos amazónicos, lodges ecológicos inmersos en la selva y convivencia con comunidades nativas.</li>
+          <li><strong>Servicios Incluidos:</strong> Hospedaje en eco-lodges, transporte fluvial en canoas motorizadas, caminatas guiadas diurnas y nocturnas por la selva tropical, e interacción cultural comunitaria.</li>
+          <li><strong>Tour Destacado:</strong> <em>"Expedición Profunda en la Selva Amazónica"</em> (4 días / 3 noches).</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Derechos reservados-EcuaTours</p>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  </script>
+</body>
+</html>

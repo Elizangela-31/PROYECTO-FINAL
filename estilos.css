@@ -819,7 +819,8 @@ select {
     display: flex;
   }
 
-  .nav-link {
+  .nav-link,
+  .nav-links .btn {
     justify-content: center;
     width: 100%;
   }

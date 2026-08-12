@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <style>*{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -20,17 +23,16 @@ body{
 
     display:flex;
 
-    justify-content:center;
-
-    align-items:center;
-
-    padding:40px;
+    flex-direction:column;
 }
 
 .section-form{
+    flex:1;
     width:100%;
     display:flex;
     justify-content:center;
+    align-items:center;
+    padding:40px;
 }
 
 .form-panel{
@@ -174,9 +176,31 @@ font-size:26px;
 
 }
 
-}</style>   
+}</style>
 <body>
-    
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img class="brand-mark" src="biodiversidad.jpg" alt="Logo EcuaTours">
+        <span>EcuaTours</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="informacion-destinos.html" class="nav-link">Destinos</a></li>
+        <li><a href="index.html#paquetes" class="nav-link">Paquetes</a></li>
+        <li><a href="admin.html" class="nav-link nav-cta">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
     <section id="registro" class="section section-form">
       <div class="form-panel">
         <a href="index.html" style="display:inline-block;margin-bottom:20px;color:#1F6662;font-weight:600;text-decoration:none;">&larr; Volver al inicio</a>
@@ -217,6 +241,20 @@ font-size:26px;
         </form>
       </div>
     </section>
+
+  <footer class="site-footer">
+    <p>Derechos reservados-EcuaTours</p>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  </script>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";

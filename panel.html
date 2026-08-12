@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acceso administrador | EcuaTours</title>
+  <title>Panel de solicitudes | EcuaTours</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,26 +28,22 @@
         <li><a href="informacion-destinos.html" class="nav-link">Destinos</a></li>
         <li><a href="index.html#paquetes" class="nav-link">Paquetes</a></li>
         <li><a href="admin.html" class="nav-link nav-cta active">Admin</a></li>
+        <li><button id="logout-btn" class="btn btn-outline" type="button">Cerrar sesión</button></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="section admin-login-section">
-      <div class="admin-login">
-        <p class="eyebrow">Panel privado</p>
-        <h2>Acceso administrador</h2>
-        <form id="login-form" class="contact-form" novalidate>
-          <label for="admin-correo">Correo</label>
-          <input type="email" id="admin-correo" placeholder="correo@ejemplo.com" required>
-
-          <label for="admin-clave">Clave</label>
-          <input type="password" id="admin-clave" required>
-
-          <button class="btn btn-primary" type="submit">Ingresar</button>
-          <p id="login-error" class="form-message error hidden"></p>
-        </form>
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Solicitudes</p>
+        <h2>Panel de reservas</h2>
+        <p>Responde por WhatsApp y marca cada solicitud como contactada.</p>
       </div>
+
+      <p id="panel-empty" class="package-empty hidden">Todavía no hay solicitudes.</p>
+
+      <div id="solicitudes-grid" class="solicitud-grid"></div>
     </section>
   </main>
 
@@ -55,6 +51,6 @@
     <p>Derechos reservados-EcuaTours</p>
   </footer>
 
-  <script type="module" src="admin.js"></script>
+  <script type="module" src="panel.js"></script>
 </body>
 </html>
