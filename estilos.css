@@ -692,6 +692,85 @@ select {
   margin-top: 0;
 }
 
+.hidden {
+  display: none;
+}
+
+.admin-login-section {
+  display: flex;
+  justify-content: center;
+  max-width: none;
+}
+
+.admin-login {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  padding: 34px;
+  width: 100%;
+}
+
+.admin-login .contact-form {
+  margin-top: 22px;
+}
+
+.solicitud-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.solicitud-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(23, 33, 28, 0.06);
+  padding: 22px;
+}
+
+.solicitud-card.contactado {
+  opacity: 0.6;
+}
+
+.badge-estado {
+  background: var(--soft);
+  border-radius: 999px;
+  color: var(--brand-dark);
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.solicitud-card.contactado .badge-estado {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.solicitud-interes {
+  color: var(--brand-dark);
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.solicitud-meta,
+.solicitud-fecha {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.solicitud-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
 .site-footer {
   background: var(--ink);
   color: rgba(255, 255, 255, 0.76);
@@ -704,7 +783,8 @@ select {
   .destination-grid,
   .destination-grid--four,
   .package-grid,
-  .form-panel {
+  .form-panel,
+  .solicitud-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -760,7 +840,8 @@ select {
   .destination-grid--four,
   .package-grid,
   .form-panel,
-  .stats-band {
+  .stats-band,
+  .solicitud-grid {
     grid-template-columns: 1fr;
   }
 
