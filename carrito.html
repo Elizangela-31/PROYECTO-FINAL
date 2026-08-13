@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carrito | EcuaTours</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="biodiversidad.jpg" alt="EcuaTours">
+      <span>EcuaTours</span>
+    </a>
+
+    <a class="btn btn-outline" href="index.html#paquetes">
+      ← Seguir eligiendo
+    </a>
+
+  </nav>
+</header>
+
+
+<main class="section checkout-page">
+
+  <div class="section-heading checkout-heading">
+    <p class="eyebrow">Resumen de la solicitud</p>
+    <h2>🛒 Tu carrito</h2>
+    <p>Revisa tu viaje antes de confirmar.</p>
+  </div>
+
+
+  <div class="checkout-shell">
+
+    <section>
+
+      <div id="cart-items" class="checkout-items"></div>
+
+      <div id="cart-empty" class="cart-empty hidden">
+        Tu carrito está vacío.
+        <a href="index.html#paquetes">
+          <strong>Ver paquetes</strong>
+        </a>
+      </div>
+
+    </section>
+
+
+    <aside class="order-summary-panel">
+
+      <h3>Datos del viajero</h3>
+
+      <form id="checkout-form" class="checkout-form">
+
+        <label for="nombre">Nombre completo</label>
+        <input
+          id="nombre"
+          type="text"
+          required
+          minlength="2"
+          placeholder="Ej. Ana Torres">
+
+
+        <label for="correo">Correo electrónico</label>
+        <input
+          id="correo"
+          type="email"
+          required
+          placeholder="correo@ejemplo.com">
+
+
+        <label for="telefono">Teléfono / WhatsApp</label>
+        <input
+          id="telefono"
+          type="tel"
+          required
+          minlength="7"
+          placeholder="0991234567">
+
+
+        <label for="metodo-pago">Método de pago</label>
+
+        <select id="metodo-pago" required>
+          <option value="">Seleccione una opción</option>
+          <option>Efectivo</option>
+          <option>Transferencia bancaria</option>
+          <option>Tarjeta</option>
+        </select>
+
+      </form>
+
+
+      <div class="summary-lines">
+
+        <div>
+          <span>Paquetes / servicios</span>
+          <strong id="sum-base">$0.00</strong>
+        </div>
+
+        <div>
+          <span>Guías</span>
+          <strong id="sum-guide">$0.00</strong>
+        </div>
+
+        <div>
+          <span>Alimentación</span>
+          <strong id="sum-food">$0.00</strong>
+        </div>
+
+        <div>
+          <span>Transporte adicional</span>
+          <strong id="sum-transport">$0.00</strong>
+        </div>
+
+        <div>
+          <span>Merch</span>
+          <strong id="sum-merch">$0.00</strong>
+        </div>
+
+      </div>
+
+
+      <div class="grand-total-row">
+        <span>Total final</span>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+
+
+      <p class="cart-note">
+        Los valores son referenciales y se confirman con EcuaTours.
+      </p>
+
+
+      <button
+        id="checkout-btn"
+        class="btn btn-whatsapp-checkout"
+        type="button">
+
+        Confirmar compra por WhatsApp
+      </button>
+
+
+      <button
+        id="cancel-order-btn"
+        class="btn btn-cancel-order"
+        type="button">
+
+        Cancelar solicitud
+      </button>
+
+
+      <p id="checkout-message" class="form-message"></p>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script type="module" src="carrito.js"></script>
+
+</body>
+</html>

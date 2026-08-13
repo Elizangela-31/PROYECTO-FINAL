@@ -1,197 +1,345 @@
-const menuButton = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const navItems = document.querySelectorAll(".nav-link");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const packageCards = document.querySelectorAll(".package-card");
-const packageSearch = document.getElementById("package-search");
-const packageEmpty = document.getElementById("package-empty");
-const destinationButtons = document.querySelectorAll(".destination-btn");
-const packageButtons = document.querySelectorAll(".package-btn");
-const packageInfoButtons = document.querySelectorAll(".package-info-btn");
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modal-title");
-const modalText = document.getElementById("modal-text");
-const modalPlaces = document.getElementById("modal-places");
-const modalClose = document.querySelector("#modal .modal-close");
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 
-const AGENCY_WHATSAPP = "593959509052";
+const CART_KEY = "ecuatours_carrito";
 
-const packageModal = document.getElementById("package-modal");
-const packageModalTitle = document.getElementById("package-modal-title");
-const packageModalDuration = document.getElementById("package-modal-duration");
-const packageModalPrice = document.getElementById("package-modal-price");
-const packageModalDesc = document.getElementById("package-modal-desc");
-const packageModalIframe = document.getElementById("package-modal-iframe");
-const packageModalWhatsapp = document.getElementById("package-modal-whatsapp");
-const packageModalCloseButtons = document.querySelectorAll(".package-modal-close");
- 
-const destinationDetails = {
+
+// ==========================================
+// PAQUETES
+// ==========================================
+
+const paquetes = [
+  {
+    nombre: "Ruta volcanes y cascadas",
+    categoria: "aventura",
+    duracion: "3 días",
+    precio: 180,
+    mapa: "Cotopaxi, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Transporte, guía, alojamiento y actividades al aire libre entre volcanes y cascadas."
+  },
+  {
+    nombre: "Quito y ciudades patrimoniales",
+    categoria: "cultura",
+    duracion: "2 días",
+    precio: 95,
+    mapa: "Centro Histórico de Quito, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Historia, gastronomía, miradores y recorridos guiados por el centro histórico."
+  },
+  {
+    nombre: "Costa y descanso frente al mar",
+    categoria: "relax",
+    duracion: "4 días",
+    precio: 260,
+    mapa: "Manta, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Hotel, traslados, alimentación y actividades suaves frente al mar."
+  },
+  {
+    nombre: "Selva y kayak amazónico",
+    categoria: "aventura",
+    duracion: "3 días",
+    precio: 210,
+    mapa: "Tena, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85",
+    descripcion: "Navegación en kayak, caminatas guiadas y noches en lodge ecológico."
+  },
+  {
+    nombre: "Cuenca colonial y artesanías",
+    categoria: "cultura",
+    duracion: "2 días",
+    precio: 110,
+    mapa: "Cuenca, Ecuador",
+    imagen: "https://www.galakiwi.com/blog/wp-content/uploads/2025/10/pexels-davegarcia-30785381-scaled.jpg",
+    descripcion: "Arquitectura republicana, talleres de artesanos y mercados tradicionales."
+  },
+  {
+    nombre: "Galápagos costa y snorkel",
+    categoria: "relax",
+    duracion: "5 días",
+    precio: 650,
+    mapa: "Puerto Ayora, Galápagos, Ecuador",
+    imagen: "https://artralux.co.th/wp-content/uploads/2022/04/cover-%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%88%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0-%E0%B8%81%E0%B8%B2%E0%B8%A5%E0%B8%B2%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%AA-1-768x384.jpg",
+    descripcion: "Playas volcánicas, snorkel y navegación entre islas a ritmo tranquilo."
+  },
+  {
+    nombre: "Refugio de Vida Silvestre Pasochoa",
+    categoria: "aventura",
+    duracion: "1 día",
+    precio: 45,
+    mapa: "Refugio de Vida Silvestre Pasochoa, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Caminata guiada por bosque andino con avistamiento de aves."
+  },
+  {
+    nombre: "Rutas en cuadrón",
+    categoria: "aventura",
+    duracion: "1 día",
+    precio: 20,
+    mapa: "Rumipamba, Rumiñahui, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Recorrido en cuadrón por senderos rurales y miradores de Rumipamba."
+  },
+  {
+    nombre: "Truchas y turismo rural en Rumipamba",
+    categoria: "relax",
+    duracion: "1 día",
+    precio: 35,
+    mapa: "Rumipamba, Rumiñahui, Ecuador",
+    imagen: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80",
+    descripcion: "Visita a criaderos de truchas, cabalgatas y paisajes andinos."
+  }
+];
+
+
+// ==========================================
+// DESTINOS
+// ==========================================
+
+const destinos = {
   costa: {
-    title: "Costa",
-    text: "La Costa combina playas, manglares, avistamiento de ballenas, surf y gastronomia marina. Es ideal para viajeros que buscan descanso, sol y experiencias frente al mar.",
-    places: ["Manta", "Salinas", "Montañita", "Puerto López"]
+    titulo: "Costa",
+    texto: "Playas, manglares, surf, gastronomía marina y descanso frente al mar.",
+    lugares: ["Manta", "Salinas", "Montañita", "Puerto López"]
   },
   galapagos: {
-    title: "Galapagos",
-    text: "Galapagos ofrece fauna unica, playas volcanicas, snorkel, buceo y recorridos entre islas. Es una region perfecta para turismo de naturaleza y fotografia.",
-    places: ["Santa Cruz", "Isabela", "San Cristóbal", "Bartolomé"]
+    titulo: "Galápagos",
+    texto: "Fauna única, playas volcánicas, snorkel y navegación entre islas.",
+    lugares: ["Santa Cruz", "Isabela", "San Cristóbal", "Bartolomé"]
   },
   sierra: {
-    title: "Sierra",
-    text: "La Sierra muestra volcanes, lagunas, pueblos patrimoniales, mercados andinos y ciudades historicas como Quito y Cuenca.",
-    places: ["Quito", "Cotopaxi", "Quilotoa", "Cuenca", "Baños"]
+    titulo: "Sierra",
+    texto: "Volcanes, lagunas, mercados andinos y ciudades históricas.",
+    lugares: ["Quito", "Cotopaxi", "Quilotoa", "Cuenca", "Baños"]
   },
   amazonia: {
-    title: "Amazonia",
-    text: "La Amazonia ecuatoriana permite navegar por rios, caminar por senderos de selva, visitar comunidades locales y observar aves exoticas.",
-    places: ["Tena", "Puyo", "Misahuallí", "Yasuní"]
+    titulo: "Amazonía",
+    texto: "Ríos, selva, comunidades locales y naturaleza.",
+    lugares: ["Tena", "Puyo", "Misahuallí", "Yasuní"]
   }
 };
- 
-menuButton.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-});
- 
-navItems.forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
- 
-    navItems.forEach((item) => item.classList.remove("active"));
-    link.classList.add("active");
-  });
-});
- 
-let activeFilter = "todos";
 
-function applyPackageFilters() {
-  const query = packageSearch.value.trim().toLowerCase();
-  let visibleCount = 0;
 
-  packageCards.forEach((card) => {
-    const matchesCategory = activeFilter === "todos" || card.dataset.category === activeFilter;
-    const matchesQuery = !query || card.dataset.name.toLowerCase().includes(query);
-    const shouldShow = matchesCategory && matchesQuery;
+// ==========================================
+// CARRITO
+// ==========================================
 
-    card.classList.toggle("hidden", !shouldShow);
-    if (shouldShow) {
-      visibleCount += 1;
-    }
-  });
-
-  packageEmpty.classList.toggle("hidden", visibleCount > 0);
+function getCart() {
+  return JSON.parse(localStorage.getItem(CART_KEY)) || [];
 }
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-
-    filterButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-
-    applyPackageFilters();
-  });
-});
-
-packageSearch.addEventListener("input", applyPackageFilters);
- 
-destinationButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const destination = button.dataset.destination;
-    const detail = destinationDetails[destination];
-
-    if (!detail) {
-      return;
-    }
-
-    modalTitle.textContent = detail.title;
-    modalText.textContent = detail.text;
-    modalPlaces.innerHTML = "";
-    detail.places.forEach((place) => {
-      const item = document.createElement("li");
-      item.textContent = place;
-      modalPlaces.appendChild(item);
-    });
-    modal.classList.remove("hidden");
-    modal.setAttribute("aria-hidden", "false");
-  });
-});
- 
-packageButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const interes = encodeURIComponent(button.dataset.package);
-    window.location.href = `Registro.html?interes=${interes}`;
-  });
-});
-
-function openPackageModal(card) {
-  const name = card.dataset.name;
-  const duration = card.querySelector(".badge-duration").textContent;
-  const price = card.querySelector(".price strong").textContent;
-  const description = card.querySelector(".package-body p").textContent;
-  const location = card.dataset.map;
-
-  packageModalTitle.textContent = name;
-  packageModalDuration.textContent = duration;
-  packageModalPrice.textContent = price;
-  packageModalDesc.textContent = description;
-  packageModalIframe.src = `https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`;
-
-  const mensaje = `Hola, quiero información sobre el paquete "${name}".`;
-  packageModalWhatsapp.href = `https://wa.me/${AGENCY_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-
-  packageModal.classList.remove("hidden");
-  packageModal.setAttribute("aria-hidden", "false");
+function updateCartCount() {
+  const contador = $("#cart-count");
+  if (contador) contador.textContent = getCart().length;
 }
 
-function closePackageModal() {
-  packageModal.classList.add("hidden");
-  packageModal.setAttribute("aria-hidden", "true");
-  packageModalIframe.src = "";
-}
+function addToCart(paquete) {
+  const carrito = getCart();
 
-packageInfoButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".package-card");
-    openPackageModal(card);
-  });
-});
-
-packageModalCloseButtons.forEach((button) => {
-  button.addEventListener("click", closePackageModal);
-});
-
-packageModal.addEventListener("click", (event) => {
-  if (event.target === packageModal) {
-    closePackageModal();
-  }
-});
-
-function closeModal() {
-  modal.classList.add("hidden");
-  modal.setAttribute("aria-hidden", "true");
-}
-
-modalClose.addEventListener("click", closeModal);
-
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    closeModal();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") {
+  if (carrito.some(p => p.nombre === paquete.nombre)) {
+    alert(`"${paquete.nombre}" ya está en el carrito.`);
     return;
   }
 
-  if (!modal.classList.contains("hidden")) {
-    closeModal();
+  carrito.push({
+    id: Date.now(),
+    nombre: paquete.nombre,
+    descripcion: paquete.descripcion,
+    tipo: "Paquete",
+    precioBase: paquete.precio,
+    duracion: paquete.duracion,
+    fecha: "",
+    personas: 1,
+    guia: false,
+    extras: {
+      alimentacion: false,
+      transporte: false,
+      merch: false
+    },
+    costos: {
+      base: paquete.precio,
+      guia: 0,
+      alimentacion: 0,
+      transporte: 0,
+      merch: 0
+    },
+    precio: paquete.precio,
+    total: paquete.precio
+  });
+
+  localStorage.setItem(CART_KEY, JSON.stringify(carrito));
+  updateCartCount();
+
+  alert(`"${paquete.nombre}" agregado al carrito 🛒`);
+}
+
+
+// ==========================================
+// CREAR PAQUETES
+// ==========================================
+
+function showPackages(lista = paquetes) {
+  const grid = $("#package-grid");
+  if (!grid) return;
+
+  grid.innerHTML = lista.map((p, i) => `
+    <article class="package-card"
+      data-category="${p.categoria}"
+      data-name="${p.nombre}">
+
+      <div class="package-media">
+        <img src="${p.imagen}" alt="${p.nombre}">
+        <span class="badge badge-duration">${p.duracion}</span>
+        <span class="badge badge-category badge-${p.categoria}">
+          ${p.categoria}
+        </span>
+      </div>
+
+      <div class="package-body">
+        <h3>${p.nombre}</h3>
+        <p>${p.descripcion}</p>
+
+        <div class="package-footer">
+          <div class="price">
+            <span class="price-label">Desde</span>
+            <strong>$${p.precio}</strong>
+          </div>
+
+          <div class="package-actions">
+            <button class="btn btn-outline info-btn" data-id="${i}">
+              Ver más
+            </button>
+
+            <button class="btn btn-primary reserve-btn" data-id="${i}">
+              Reservar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </article>
+  `).join("");
+
+  $(".package-empty")?.classList.toggle("hidden", lista.length > 0);
+}
+
+
+// ==========================================
+// FILTRAR Y BUSCAR
+// ==========================================
+
+let categoria = "todos";
+
+function filterPackages() {
+  const texto = ($("#package-search")?.value || "").toLowerCase();
+
+  const filtrados = paquetes.filter(p =>
+    (categoria === "todos" || p.categoria === categoria) &&
+    p.nombre.toLowerCase().includes(texto)
+  );
+
+  showPackages(filtrados);
+}
+
+$$(".filter-btn").forEach(btn => {
+  btn.onclick = () => {
+    categoria = btn.dataset.filter;
+
+    $$(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    filterPackages();
+  };
+});
+
+$("#package-search")?.addEventListener("input", filterPackages);
+
+
+// ==========================================
+// BOTONES DE PAQUETES
+// ==========================================
+
+$("#package-grid")?.addEventListener("click", e => {
+
+  const reservar = e.target.closest(".reserve-btn");
+  const info = e.target.closest(".info-btn");
+
+  if (reservar) {
+    addToCart(paquetes[Number(reservar.dataset.id)]);
   }
 
-  if (!packageModal.classList.contains("hidden")) {
-    closePackageModal();
+  if (info) {
+    const paquete = paquetes[Number(info.dataset.id)];
+
+    window.location.href =
+      `Registro.html?interes=${encodeURIComponent(paquete.nombre)}`;
   }
+
 });
- 
+
+
+// ==========================================
+// DESTINOS
+// ==========================================
+
+$$(".destination-btn").forEach(btn => {
+  btn.onclick = () => {
+
+    const d = destinos[btn.dataset.destination];
+    if (!d) return;
+
+    $("#modal-title").textContent = d.titulo;
+    $("#modal-text").textContent = d.texto;
+
+    $("#modal-places").innerHTML =
+      d.lugares.map(l => `<li>${l}</li>`).join("");
+
+    $("#modal").classList.remove("hidden");
+  };
+});
+
+function closeModal() {
+  $("#modal")?.classList.add("hidden");
+}
+
+$(".modal-close")?.addEventListener("click", closeModal);
+
+$("#modal")?.addEventListener("click", e => {
+  if (e.target.id === "modal") closeModal();
+});
+
+
+// ==========================================
+// MENÚ
+// ==========================================
+
+$(".menu-toggle")?.addEventListener("click", () => {
+  $(".nav-links")?.classList.toggle("open");
+});
+
+$$(".nav-link").forEach(link => {
+  link.onclick = () => {
+    $(".nav-links")?.classList.remove("open");
+
+    $$(".nav-link").forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+  };
+});
+
+
+// ==========================================
+// ESC
+// ==========================================
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+
+// ==========================================
+// INICIO
+// ==========================================
+
+showPackages();
+updateCartCount();
